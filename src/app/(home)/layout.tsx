@@ -1,3 +1,4 @@
+import { Header } from '@/components/header'
 import { cn } from '@/lib/utils'
 import { RootProvider } from '@/providers'
 import type { Metadata } from 'next'
@@ -28,7 +29,8 @@ export default function RootLayout({
         )}
       >
         <RootProvider>
-          <main className="flex justify-center items-start w-full max-w-7xl px-8">
+          <Header />
+          <main className="flex justify-center items-start w-full max-w-7xl px-8 pt-32">
             {children}
           </main>
         </RootProvider>
