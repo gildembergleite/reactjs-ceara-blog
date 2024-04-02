@@ -27,7 +27,11 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        <RootProvider>{children}</RootProvider>
+        <RootProvider>
+          <main className="flex justify-center items-start w-full max-w-7xl px-8">
+            {children}
+          </main>
+        </RootProvider>
       </body>
     </html>
   )
