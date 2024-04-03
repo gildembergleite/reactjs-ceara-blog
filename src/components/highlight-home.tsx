@@ -1,11 +1,27 @@
+import { Tag } from '@/@types/tag'
 import { AvatarWithFallback } from '@/components/avatar-with-fallback'
-import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { formatDate } from '@/utils/format-date'
 import Link from 'next/link'
+import { BadgeTagArray } from './badge-tag-array'
 import { ImageCover } from './image-cover'
 
 export function HighlightHome() {
+  const tagArray: Tag[] = [
+    {
+      slug: 'react',
+      name: 'React',
+    },
+    {
+      slug: 'tailwind',
+      name: 'Tailwind CSS',
+    },
+    {
+      slug: 'responsive',
+      name: 'Responsive',
+    },
+  ]
+
   return (
     <section className="relative w-full max-w-7xl h-full aspect-video">
       <ImageCover
@@ -15,18 +31,7 @@ export function HighlightHome() {
       />
       <Card className="absolute -bottom-10 left-14 w-full max-w-2xl bg-white">
         <CardHeader>
-          <div className="flex gap-3 items-center">
-            <Link href={'/tags/react'}>
-              <Badge>React</Badge>
-            </Link>
-            <Link href={'/tags/tailwind'}>
-              <Badge>Tailwind CSS</Badge>
-            </Link>
-
-            <Link href={'/tags/responsive'}>
-              <Badge>Responsive</Badge>
-            </Link>
-          </div>
+          <BadgeTagArray tagArray={tagArray} />
         </CardHeader>
         <CardContent>
           <Link href={'/'}>
