@@ -1,27 +1,12 @@
-import { Tag } from '@/@types/tag'
 import { AvatarWithFallback } from '@/components/avatar-with-fallback'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
+import { tagArray } from '@/mock/tagArray'
 import { formatDate } from '@/utils/format-date'
 import Link from 'next/link'
 import { BadgeTagArray } from './badge-tag-array'
 import { ImageCover } from './image-cover'
 
 export function HighlightHome() {
-  const tagArray: Tag[] = [
-    {
-      slug: 'react',
-      name: 'React',
-    },
-    {
-      slug: 'tailwind',
-      name: 'Tailwind CSS',
-    },
-    {
-      slug: 'responsive',
-      name: 'Responsive',
-    },
-  ]
-
   return (
     <section className="relative w-full max-w-7xl h-full aspect-video">
       <ImageCover
