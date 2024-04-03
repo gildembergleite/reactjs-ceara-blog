@@ -1,28 +1,23 @@
+import { Post } from '@/@types/post'
 import { AvatarWithFallback } from '@/components/avatar-with-fallback'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
-import { tagArray } from '@/mock/tagArray'
 import { formatDate } from '@/utils/format-date'
 import Link from 'next/link'
 import { BadgeTagArray } from './badge-tag-array'
 import { ImageCover } from './image-cover'
 
-export function HighlightHome() {
+export function HighlightHome(post: Post) {
   return (
     <section className="relative w-full max-w-7xl h-full aspect-video">
-      <ImageCover
-        url={
-          'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-        }
-      />
+      <ImageCover url={post.image} />
       <Card className="absolute -bottom-10 left-14 w-full max-w-2xl bg-white">
         <CardHeader>
-          <BadgeTagArray tagArray={tagArray} />
+          <BadgeTagArray tagArray={post.tags} />
         </CardHeader>
         <CardContent>
           <Link href={'/'}>
             <h2 className="text-foreground font-semibold text-4xl">
-              Como desenvolver tabelas responsivas para desktop e mobile,
-              utilizando Tailwind CSS
+              {post.title}
             </h2>
           </Link>
         </CardContent>
@@ -30,12 +25,12 @@ export function HighlightHome() {
           <div className="flex items-center gap-2 text-muted-foreground text-sm">
             <Link href={'#'} className="flex items-center gap-2">
               <AvatarWithFallback
-                image="https://github.com/gildembergleite.png"
-                name="Gildemberg Leite"
+                image={post.author.imageUrl}
+                name={post.author.name}
               />
-              Gildemberg Leite
+              {post.author.name}
             </Link>{' '}
-            -<span>{formatDate('2024-01-25')}</span>
+            -<span>{formatDate(post.date)}</span>
           </div>
         </CardFooter>
       </Card>
