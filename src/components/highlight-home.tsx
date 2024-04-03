@@ -2,21 +2,16 @@ import { AvatarWithFallback } from '@/components/avatar-with-fallback'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { formatDate } from '@/utils/format-date'
-import Image from 'next/image'
 import Link from 'next/link'
+import { ImageCover } from './image-cover'
 
 export function HighlightHome() {
   return (
     <section className="relative w-full max-w-7xl h-full aspect-video">
-      <Image
-        className="w-full h-full object-cover rounded-lg"
-        src={
+      <ImageCover
+        url={
           'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
         }
-        width={0}
-        height={0}
-        sizes="100vw"
-        alt=""
       />
       <Card className="absolute -bottom-10 left-14 w-full max-w-2xl bg-white">
         <CardHeader>
