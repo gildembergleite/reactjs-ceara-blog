@@ -30,7 +30,7 @@ export default function RootLayout({
       >
         <RootProvider>
           <Header />
-          <main className="flex justify-center items-start w-full max-w-7xl px-8 pt-32">
+          <main className="flex justify-center items-center w-full px-8 pt-32">
             {children}
           </main>
         </RootProvider>
