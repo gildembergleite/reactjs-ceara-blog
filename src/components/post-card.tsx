@@ -11,7 +11,7 @@ export function PostCard(post: Post) {
     <Card>
       <CardHeader className="gap-4">
         <ImageCover url={post.image} />
-        <BadgeTagArray tagArray={post.tags} />
+        <BadgeTagArray tagArray={post.tags} style="secondary" />
       </CardHeader>
       <CardContent>
         <Link href={'/'}>
