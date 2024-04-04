@@ -18,7 +18,9 @@ export function BadgeTagArray({
           <Link key={index} href={`/tags/${tag.slug}`}>
             <Badge
               className={
-                style === 'secondary' ? 'text-primary bg-primary/30' : ''
+                style === 'secondary'
+                  ? 'text-primary bg-primary/10 hover:bg-primary hover:text-white'
+                  : ''
               }
             >
               {tag.name}
