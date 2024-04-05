@@ -5,7 +5,7 @@ export default function LoadingHome() {
     <>
       <div className="relative w-full max-w-7xl h-full aspect-video">
         <Skeleton className="w-full h-full aspect-video" />
-        <div className="absolute -bottom-10 left-14 w-full max-w-2xl bg-white p-6k z-50 drop-shadow-sm">
+        <div className="absolute -bottom-10 left-14 w-full max-w-2xl p-6 z-50 drop-shadow-sm bg-background">
           <div className="flex gap-2">
             <Skeleton className="w-28 h-6 rounded-full" />
             <Skeleton className="w-28 h-6 rounded-full" />
