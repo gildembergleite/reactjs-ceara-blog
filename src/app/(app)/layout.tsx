@@ -1,3 +1,4 @@
+import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { cn } from '@/lib/utils'
 import { RootProvider } from '@/providers'
@@ -30,9 +31,10 @@ export default function RootLayout({
       >
         <RootProvider>
           <Header />
-          <main className="flex flex-col justify-center items-center w-full h-full px-8 pt-32">
+          <main className="flex flex-col justify-center items-center w-full h-full px-8 pt-32 pb-16">
             {children}
           </main>
+          <Footer />
         </RootProvider>
       </body>
     </html>
