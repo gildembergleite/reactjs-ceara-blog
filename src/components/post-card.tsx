@@ -14,7 +14,7 @@ export function PostCard(post: Post) {
         <BadgeTagArray tagArray={post.tags} style="secondary" />
       </CardHeader>
       <CardContent>
-        <Link href={'/'}>
+        <Link href={`/${post.slug}`}>
           <h2 className="text-foreground font-semibold text-2xl">
             {post.title}
           </h2>
