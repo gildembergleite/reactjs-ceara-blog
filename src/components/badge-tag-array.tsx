@@ -5,11 +5,13 @@ import Link from 'next/link'
 interface BadgeTagArrayProps {
   tagArray: Tag[]
   style?: 'primary' | 'secondary'
+  size?: 'sm' | 'md'
 }
 
 export function BadgeTagArray({
   tagArray,
   style = 'primary',
+  size = 'sm',
 }: BadgeTagArrayProps) {
   return (
     <>
@@ -17,11 +19,14 @@ export function BadgeTagArray({
         {tagArray.map((tag, index) => (
           <Link key={index} href={`/tags/${tag.slug}`}>
             <Badge
-              className={
-                style === 'secondary'
-                  ? 'text-primary bg-primary/10 hover:bg-primary hover:text-white'
-                  : ''
-              }
+              className={`
+                ${
+                  style === 'secondary'
+                    ? 'text-primary bg-primary/10 hover:bg-primary hover:text-white'
+                    : ''
+                }
+                ${size === 'md' ? 'text-base' : ''}
+              `}
             >
               {tag.name}
             </Badge>
