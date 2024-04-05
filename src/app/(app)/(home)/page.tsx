@@ -11,7 +11,7 @@ export default async function HomePage() {
   return (
     <>
       <HighlightHome {...posts[0]} />
-      <section className="w-full max-w-7xl py-24 space-y-4">
+      <section className="w-full max-w-7xl space-y-8 pt-24">
         <div className="space-x-4">
           <Button variant={'ghost'} className="text-base">
             Últimas publicações
@@ -22,7 +22,7 @@ export default async function HomePage() {
         </div>
         <div className="grid grid-cols-3 gap-6">
           {posts.map((post) => (
-            <PostCard key={post.id} {...post} />
+            <PostCard key={post.id} post={post} />
           ))}
         </div>
         <div className="flex w-full justify-center pt-8">
