@@ -10,15 +10,13 @@ export function HighlightHome(post: Post) {
   return (
     <section className="relative w-full max-w-7xl h-full aspect-video">
       <ImageCover url={post.image} />
-      <Card className="absolute -bottom-10 left-14 w-full max-w-2xl bg-white drop-shadow-xl">
+      <Card className="absolute -bottom-10 left-14 w-full max-w-2xl drop-shadow-xl0">
         <CardHeader>
           <BadgeTagArray tagArray={post.tags} />
         </CardHeader>
         <CardContent>
-          <Link href={'/'}>
-            <h2 className="text-foreground font-semibold text-4xl">
-              {post.title}
-            </h2>
+          <Link href={`/${post.slug}`}>
+            <h2 className="font-semibold text-4xl">{post.title}</h2>
           </Link>
         </CardContent>
         <CardFooter>
