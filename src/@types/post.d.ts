@@ -1,3 +1,4 @@
+import { Author } from './author'
 import { Tag } from './tag'
 
 export type Post = {
@@ -5,10 +6,7 @@ export type Post = {
   title: string
   slug: string
   date: string
-  author: {
-    name: string
-    imageUrl: string
-  }
+  author: Author
   tags: Tag[]
   content: string
   image: string
