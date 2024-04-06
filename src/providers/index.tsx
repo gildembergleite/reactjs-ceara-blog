@@ -1,17 +1,26 @@
 'use client'
 
+import { Session } from 'next-auth'
+import { SessionProvider } from 'next-auth/react'
 import { ThemeProvider } from 'next-themes'
 import { ReactNode } from 'react'
 
-export function RootProvider({ children }: { children: ReactNode }) {
+interface RootProviderProps {
+  children: ReactNode
+  session: Session | null
+}
+
+export function RootProvider({ children, session }: RootProviderProps) {
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem
-      disableTransitionOnChange
-    >
-      {children}
-    </ThemeProvider>
+    <SessionProvider session={session}>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        {children}
+      </ThemeProvider>
+    </SessionProvider>
   )
 }

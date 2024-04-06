@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { ToggleButtonTheme } from './toggle-button-theme'
 import { Button } from './ui/button'
 import { Input } from './ui/input'
+import { UserMenuButton } from './user-menu-button'
 
 export function Header() {
   return (
@@ -17,6 +18,7 @@ export function Header() {
             </Button>
           </div>
           <ToggleButtonTheme />
+          <UserMenuButton />
         </div>
       </div>
     </header>
