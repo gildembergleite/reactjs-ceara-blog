@@ -21,9 +21,12 @@ export function HighlightHome(post: Post) {
         </CardContent>
         <CardFooter>
           <div className="flex items-center gap-2 text-muted-foreground text-sm">
-            <Link href={'#'} className="flex items-center gap-2">
+            <Link
+              href={`/author/${post.author.slug}`}
+              className="flex items-center gap-2"
+            >
               <AvatarWithFallback
-                image={post.author.imageUrl}
+                image={post.author.avatarUrl}
                 name={post.author.name}
               />
               {post.author.name}
