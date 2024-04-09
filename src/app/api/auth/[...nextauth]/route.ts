@@ -16,10 +16,30 @@ const authOptions: AuthOptions = {
       },
     }),
   ],
+  session: {
+    strategy: 'jwt',
+  },
+  secret: env.NEXTAUTH_SECRET,
   callbacks: {
-    async signIn({ account, profile }) {
-      console.log(account, profile)
+    async signIn({ account }) {
+      if (account && account.provider === 'google' && account.access_token) {
+        const url = `${env.NEXT_PUBLIC_API_URL}/auth/${account.provider}/callback?access_token=${account.access_token}`
+
+        await fetch(url, { cache: 'no-cache' })
+          .then(async (res) => {
+            const response = await res.json()
+            console.log(response)
+          })
+          .catch((err) => {
+            const error = err as Error
+            console.error('Error fetching: ', error)
+          })
+      }
+
       return true
+    },
+    async session(params) {
+      return params.session
     },
   },
 }
