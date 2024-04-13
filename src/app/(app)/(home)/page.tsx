@@ -20,9 +20,16 @@ export default async function HomePage() {
             Destaques
           </Button>
         </div>
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {posts.map((post) => (
-            <PostCard key={post.id} post={post} />
+            <>
+              <div className="flex md:hidden lg:flex">
+                <PostCard post={post} />
+              </div>
+              <div className="hidden md:flex lg:hidden">
+                <PostCard post={post} orientation="vertical" />
+              </div>
+            </>
           ))}
         </div>
         <div className="flex w-full justify-center pt-8">

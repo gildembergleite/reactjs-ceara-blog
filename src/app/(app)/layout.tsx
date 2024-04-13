@@ -34,7 +34,7 @@ export default async function RootLayout({
       >
         <RootProvider session={session}>
           <Header />
-          <main className="flex flex-col justify-center items-center w-full h-full px-8 pt-32 pb-16">
+          <main className="flex flex-col justify-center items-center w-full h-full px-2 md:px-8 pt-32 pb-16">
             {children}
           </main>
           <Footer />

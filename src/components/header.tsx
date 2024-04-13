@@ -8,7 +8,7 @@ import { UserMenuButton } from './user-menu-button'
 export function Header() {
   return (
     <header className="fixed top-0 flex justify-center items-center w-full h-24 border-b bg-background z-50">
-      <div className="flex w-full max-w-7xl justify-between items-center">
+      <div className="flex w-full max-w-7xl justify-between items-center px-8">
         <Link href={'/'}>React Ceará Blog</Link>
         <div className="flex items-center gap-6">
           <div className="flex border rounded-lg items-center gap-2 bg-muted">

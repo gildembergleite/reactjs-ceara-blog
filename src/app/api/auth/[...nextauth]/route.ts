@@ -1,5 +1,7 @@
+import { postAuthUser } from '@/api/auth/post-auth-user'
 import { env } from '@/env'
 import NextAuth, { AuthOptions, getServerSession } from 'next-auth'
+import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 
 const authOptions: AuthOptions = {
@@ -15,6 +17,25 @@ const authOptions: AuthOptions = {
         },
       },
     }),
+    CredentialsProvider({
+      name: 'Auth with Email and Password',
+      credentials: {
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' },
+      },
+      async authorize(credentials) {
+        const response = await postAuthUser({
+          email: credentials?.email ?? '',
+          password: credentials?.password ?? '',
+        })
+
+        if (!response.error) {
+          return response
+        }
+
+        return null
+      },
+    }),
   ],
   session: {
     strategy: 'jwt',
@@ -28,7 +49,7 @@ const authOptions: AuthOptions = {
         await fetch(url, { cache: 'no-cache' })
           .then(async (res) => {
             const response = await res.json()
-            console.log(response)
+            return response
           })
           .catch((err) => {
             const error = err as Error

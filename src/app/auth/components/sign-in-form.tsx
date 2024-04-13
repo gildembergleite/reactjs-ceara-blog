@@ -11,7 +11,10 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 import { z } from 'zod'
 
 const signInFormSchema = z.object({
@@ -30,12 +33,29 @@ const signInFormSchema = z.object({
 export type SignInFormData = z.infer<typeof signInFormSchema>
 
 export function SignInForm() {
+  const { replace } = useRouter()
+
   const form = useForm<SignInFormData>({
     resolver: zodResolver(signInFormSchema),
   })
 
   async function handleSignIn(formData: SignInFormData) {
-    console.log(formData)
+    const response = await signIn('credentials', {
+      ...formData,
+      redirect: false,
+    })
+
+    if (response && response.ok) {
+      toast.success(
+        'Você foi autenticado com sucesso, em breve será redirecionado!',
+      )
+      setTimeout(() => replace('/'), 2000)
+      return
+    }
+
+    toast.error(
+      'Não foi possível concluir o login, verifique suas credenciais!',
+    )
   }
 
   return (
@@ -68,12 +88,19 @@ export function SignInForm() {
         <div>
           <FormField
             control={form.control}
-            name="email"
+            name="password"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Senha</FormLabel>
                 <FormControl>
-                  <Input placeholder="********" {...field} />
+                  <Input
+                    id="password"
+                    type="text"
+                    autoCapitalize="none"
+                    autoCorrect="off"
+                    placeholder="********"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -84,7 +111,9 @@ export function SignInForm() {
           </Button>
         </div>
 
-        <Button className="w-full">Entrar</Button>
+        <Button disabled={form.formState.isSubmitting} className="w-full">
+          Entrar
+        </Button>
       </form>
     </Form>
   )
