@@ -43,24 +43,36 @@ const authOptions: AuthOptions = {
   secret: env.NEXTAUTH_SECRET,
   callbacks: {
     async signIn({ account }) {
+      let isAuthenticated = false
+
       if (account && account.provider === 'google' && account.access_token) {
         const url = `${env.NEXT_PUBLIC_API_URL}/auth/${account.provider}/callback?access_token=${account.access_token}`
+        console.log('teste')
+        try {
+          const response = await (
+            await fetch(url, { cache: 'no-cache' })
+          ).json()
 
-        await fetch(url, { cache: 'no-cache' })
-          .then(async (res) => {
-            const response = await res.json()
-            return response
-          })
-          .catch((err) => {
-            const error = err as Error
-            console.error('Error fetching: ', error)
-          })
+          if (response.error) {
+            if (
+              response.error.message ===
+              'Your account has been blocked by an administrator'
+            ) {
+              alert('Sua conta foi bloqueada, contate o suporte!')
+            }
+            console.error(response.error)
+          }
+
+          isAuthenticated = true
+        } catch (error) {
+          console.error(error)
+        }
       }
 
-      return true
+      return isAuthenticated
     },
-    async session(params) {
-      return params.session
+    async redirect({ url }) {
+      return url
     },
   },
 }
