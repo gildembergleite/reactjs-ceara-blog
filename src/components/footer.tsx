@@ -1,10 +1,11 @@
 import Link from 'next/link'
+import { BlogLogo } from './blog-logo'
 
 export function Footer() {
   return (
-    <header className="flex justify-center items-center w-full h-24 border-t bg-background z-50">
+    <footer className="flex justify-center items-center w-full h-24 border-t bg-background z-50">
       <div className="flex w-full max-w-7xl justify-between items-center">
-        <Link href={'/'}>React Ceará Blog</Link>
+        <BlogLogo />
         <div className="flex items-center gap-6">
           <Link href={''}></Link>
           <Link href={''}></Link>
@@ -12,6 +13,6 @@ export function Footer() {
           <Link href={''}></Link>
         </div>
       </div>
-    </header>
+    </footer>
   )
 }
