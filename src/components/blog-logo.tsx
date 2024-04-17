@@ -1,14 +1,21 @@
 import { ReactIcon } from '@/assets/react-icon'
 import Link from 'next/link'
+import { Typography } from './ui/typography'
 
-export function BlogLogo() {
+interface BlogLogoProps {
+  orientation?: 'vertical' | 'horizontal'
+}
+
+export function BlogLogo({ orientation }: BlogLogoProps) {
   return (
-    <Link href={'/'}>
-      <h1 className="flex items-center space-x-2">
-        <ReactIcon className="h-12 w-12 text-[#149ECA]" />
-        <span className="text-nowrap text-lg font-medium">
-          React Ceará Blog
-        </span>
+    <Link
+      href={'/'}
+      className={`flex items-center justify-center gap-2
+      ${orientation === 'vertical' ? 'flex-col' : 'flex-row'}`}
+    >
+      <ReactIcon className="h-12 w-12 text-primary" />
+      <h1>
+        <Typography.Large>React Ceará Blog</Typography.Large>
       </h1>
     </Link>
   )
