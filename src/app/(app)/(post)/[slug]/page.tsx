@@ -66,7 +66,7 @@ export default async function PostPage(props: PostPageProps) {
               className="flex items-center gap-3 hover:underline"
             >
               <AvatarWithFallback
-                image={post.author.imageUrl}
+                image={post.author.avatarUrl}
                 name={post.author.name}
               />
               {post.author.name}
