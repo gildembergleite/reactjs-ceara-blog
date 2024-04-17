@@ -1,4 +1,4 @@
-import { IconReact } from '@/assets/icon-react'
+import { BlogLogo } from '@/components/blog-logo'
 import { ToggleButtonTheme } from '@/components/toggle-button-theme'
 import { redirect } from 'next/navigation'
 import { getSession } from '../api/auth/[...nextauth]/route'
@@ -13,10 +13,7 @@ export default async function AuthPage() {
 
   return (
     <section className="flex flex-col w-full h-full justify-center items-center space-y-6">
-      <div className="flex flex-col justify-center items-center gap-4">
-        <IconReact className="w-20 h-20" />
-        <h1 className="text-xl text-center">React Ceará - Blog</h1>
-      </div>
+      <BlogLogo orientation="vertical" />
       <AuthTabs />
       <div className="absolute top-0 right-5">
         <ToggleButtonTheme />
