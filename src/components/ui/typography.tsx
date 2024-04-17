@@ -1,4 +1,5 @@
 import { HTMLAttributes } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 export const Typography = {
   H1: ({
@@ -7,7 +8,7 @@ export const Typography = {
     ...rest
   }: HTMLAttributes<HTMLHeadingElement>) => (
     <h1
-      className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl"
+      className={twMerge("scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl", className)}
       {...rest}
     >
       {children}
@@ -19,7 +20,7 @@ export const Typography = {
     ...rest
   }: HTMLAttributes<HTMLHeadingElement>) => (
     <h2
-      className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0"
+      className={twMerge("scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0", className)}
       {...rest}
     >
       {children}
@@ -30,7 +31,7 @@ export const Typography = {
     className,
     ...rest
   }: HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight" {...rest}>
+    <h3 className={twMerge("scroll-m-20 text-2xl font-semibold tracking-tight", className)} {...rest}>
       {children}
     </h3>
   ),
@@ -39,7 +40,7 @@ export const Typography = {
     className,
     ...rest
   }: HTMLAttributes<HTMLHeadingElement>) => (
-    <h4 className="scroll-m-20 text-xl font-semibold tracking-tight" {...rest}>
+    <h4 className={twMerge("scroll-m-20 text-xl font-semibold tracking-tight", className)} {...rest}>
       {children}
     </h4>
   ),
@@ -48,7 +49,7 @@ export const Typography = {
     className,
     ...rest
   }: HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="leading-7 [&:not(:first-child)]:mt-6" {...rest}>
+    <p className={twMerge("leading-7 [&:not(:first-child)]:mt-6", className)} {...rest}>
       {children}
     </p>
   ),
@@ -57,17 +58,17 @@ export const Typography = {
     className,
     ...rest
   }: HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="text-xl text-muted-foreground" {...rest}>
+    <p className={twMerge("text-xl text-muted-foreground", className)} {...rest}>
       {children}
     </p>
   ),
-  Large: ({ children, className, ...rest }: HTMLAttributes<HTMLDivElement>) => (
-    <div className="text-lg font-semibold" {...rest}>
+  Large: ({ children, className, ...rest }: HTMLAttributes<HTMLSpanElement>) => (
+    <span className={twMerge("text-lg font-medium", className)} {...rest}>
       {children}
-    </div>
+    </span>
   ),
   Small: ({ children, className, ...rest }: HTMLAttributes<HTMLElement>) => (
-    <small className="text-sm font-medium leading-none" {...rest}>
+    <small className={twMerge("text-sm font-medium leading-none", className)} {...rest}>
       {children}
     </small>
   ),
@@ -76,7 +77,7 @@ export const Typography = {
     className,
     ...rest
   }: HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="text-sm text-muted-foreground" {...rest}>
+    <p className={twMerge("text-sm text-muted-foreground", className)} {...rest}>
       {children}
     </p>
   ),
